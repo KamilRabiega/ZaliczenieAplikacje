@@ -1,0 +1,8 @@
+//Dodawanie rekordu
+            SqlConnection conn = new SqlConnection(
+            ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            string adres = newsletterbox.Text;
+            SqlCommand cmd = new SqlCommand("Insert Newsletter (Adres_email) Values ('" + adres + "')", conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();

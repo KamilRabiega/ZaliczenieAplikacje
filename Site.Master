@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Projekt_zaliczeniowy.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pl">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" src="style.css" />
+    <style>
+        body{
+            background-color: #e9ecef;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <header>
+
+            <!-- Start MENU -->
+                    <nav class=" navbar-expand-lg navbar navbar-dark bg-dark">
+                        <a class="navbar-brand" href="default.aspx">ElectroShop</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="default.aspx">Strona główna<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="cennik.aspx">Cennik</a>
+                                </li>
+                                <asp:Panel ID="Panel3" runat="server">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="rejestracja.aspx">Rejestracja</a>
+                                    </li>
+                                </asp:Panel>
+                                <asp:Panel ID="Panel4" runat="server">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="logowanie.aspx">Logowanie</a>
+                                    </li>
+                                </asp:Panel>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="oautorach.aspx">O autorach</a>
+                                </li>
+                                <asp:Panel ID="Panel2" runat="server">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="konfiguracja.aspx" style="color: red;">Konfiguracja</a>
+                                    </li>
+                                </asp:Panel>
+                            </ul><asp:Label class="navbar-text justify-content-end" ID="L_niezalogowany" runat="server" Text="xx" Visible="true"><a href="logowanie.aspx">Zaloguj się</a> lub <a href="rejestracja.aspx">zarejestruj się</a>!</asp:Label>
+                            <asp:Panel ID="Panel1" runat="server">
+                                <asp:Label class="navbar-text" runat="server" Text="Zalogowano jako "></asp:Label>
+                                <asp:Label class="navbar-text underline" ID="L_zalogowany2" runat="server" Text=""></asp:Label>
+                                <a class="link" href="wyloguj.aspx">(Wyloguj się)</a>
+                            </asp:Panel>
+                        </div>
+                    </nav>
+            
+            <!-- Koniec MENU -->
+        </header>
+        <main role="main">
+            <section class="jumbotron">
+                <div class="container">
+                    <div class="d-flex justify-content-center">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <footer class=" footer bg-dark text-center text-white">
+         
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Form -->
+                    <section class="">
+                        <form action="">
+                            <!--Grid row-->
+                            <div class="row">
+                                <!--Grid column-->
+                                <div class="col-auto">
+                                    <p class="pt-2">
+                                        <strong>Zapisz się do naszego newslettera</strong>
+                                    </p>
+                                </div>
+                                <!--Grid column-->
+
+                                <!--Grid column-->
+                                <div class="col-md-5 col-12">
+                                    <!-- Email input -->
+                                    <div class="form-outline form-white mb-4">
+                                        <!--<input type="email" id="newsletterbox" class="form-control" placeholder="Podaj adres e-mail.." />-->
+                                        <asp:TextBox ID="newsletterbox" runat="server" type="email" class="form-control" placeholder="Podaj adres e-mail.."></asp:TextBox>
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
+                                <!--Grid column-->
+                                <div class="col-auto">
+                                    <!-- Submit button -->
+                                    <asp:Button ID="newsletter" class="btn btn-outline-light mb-4" runat="server" Text="Dołącz" OnClick="newsletter_Click" />
+                                </div>
+                                <!--Grid column-->
+                            </div>
+                            <!--Grid row-->
+                        </form>
+                    </section>
+                    <!-- Section: Form -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2022 Copyright:
+                        <a class="text-white" href="default.aspx">ElectroShop</a>
+                </div>
+            <!-- Copyright -->
+        </footer>
+
+
+    </form>
+</body>
+</html>
